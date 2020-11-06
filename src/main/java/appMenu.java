@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+
 import java.awt.event.ActionListener;
 import javafx.application.Application;
 import javafx.event.*;
@@ -18,13 +18,15 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.text.TextAlignment;
 import View.createProfile;
+import static javafx.application.Application.launch;
+import static javafx.application.Platform.exit;
 /**
  *
  * @author Matt
  */
 // Looking at https://www.youtube.com/watch?v=FLkOX4Eez6o which is a JavaFX 
 // tutorial to get started
-public class loginMenu extends Application{
+public class appMenu extends Application implements EventHandler<ActionEvent>{
     
     //Buttons/Labels
     Label apolloLabel;
@@ -38,7 +40,7 @@ public class loginMenu extends Application{
         launch(args);
     }
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception{
         //setting title for window
         primaryStage.setTitle("Project Apollo");
         //Label for title
@@ -68,7 +70,9 @@ public class loginMenu extends Application{
         layout.getChildren().add(aboutButton);
         layout.getChildren().add(exitButton);
         
-
+        
+        exitButton.setOnAction(this);
+        
         Scene scene = new Scene(layout,300,380);
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -76,5 +80,21 @@ public class loginMenu extends Application{
         
 
 }
+
+    @Override
+    public void handle(ActionEvent event) {
+     if(event.getSource()== exitButton) {
+         exit();
+    }
+     if(event.getSource()== profileButton) {
+    
+    }
+     if(event.getSource()== continueButton) {
+       
+    }
+     if(event.getSource()== aboutButton) {
+         exit();
+    }
      
     }
+}

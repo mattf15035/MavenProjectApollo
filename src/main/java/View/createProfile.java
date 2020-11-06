@@ -4,22 +4,18 @@
  * and open the template in the editor.
  */
 package View;
-import java.awt.event.ActionListener;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.event.*;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.text.TextAlignment;
+
 /**
  *
  * @author Matt
@@ -34,7 +30,7 @@ public class createProfile extends Application{
    ComboBox sLevel;
    Label bodyType;
    ComboBox bType;
-   
+   Stage createprofileStage;
    Button back;
    Button forward;
 
@@ -65,14 +61,17 @@ public static void main(String[] args) {
         dropDown2.getItems().addAll("Beginner","Experienced","Expert");
         dropDown3.getItems().addAll("Recurve","Compound");
         
+        
         bType = new ComboBox(dropDown.getItems());
         sLevel = new ComboBox(dropDown2.getItems());
         bow = new ComboBox(dropDown3.getItems());
        
         VBox layout = new VBox();
+       
         layout.setAlignment(Pos.CENTER);
-        // adds all of the elements to the panel
-        layout.setSpacing(20);
+      
+         //adds all of the elements to the panel
+        layout.setSpacing(17);
         layout.getChildren().add(profileName);
         layout.getChildren().add(pName);
         layout.getChildren().add(skillLevel);
@@ -81,14 +80,52 @@ public static void main(String[] args) {
         layout.getChildren().add(bow);
         layout.getChildren().add(bodyType);
         layout.getChildren().add(bType);
-        layout.getChildren().add(forward);
-        layout.getChildren().add(back);
-        
+       //  layout.getChildren().add(back);       
+       // layout.getChildren().add(forward);
         Scene scene = new Scene(layout,400,520);
+        
         createprofileStage.setScene(scene);
+        
         createprofileStage.show();
         
         
         
+    }
+/**
+ *        private void forwardBack() {
+            HBox forwardBack = new HBox();
+            forwardBack.setAlignment(Pos.CENTER);
+            forwardBack.getChildren().add(back);       
+            forwardBack.getChildren().add(forward);
+            Scene scene2 = new Scene(forwardBack,100,200);
+            createprofileStage.setScene(scene2);
+            createprofileStage.setScene(scene2);
+            
+ */
+
+        
+       
+    public Stage getCreateprofileStage() {
+        return createprofileStage;
+    }
+
+    public void setCreateprofileStage(Stage createprofileStage) {
+        this.createprofileStage = createprofileStage;
+    }
+
+    public Button getBack() {
+        return back;
+    }
+
+    public void setBack(Button back) {
+        this.back = back;
+    }
+
+    public Button getForward() {
+        return forward;
+    }
+
+    public void setForward(Button forward) {
+        this.forward = forward;
     }
 }
