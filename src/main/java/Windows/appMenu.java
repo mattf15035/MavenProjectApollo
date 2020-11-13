@@ -1,32 +1,32 @@
+package Windows;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import java.awt.event.ActionListener;
+
 import javafx.application.Application;
 import javafx.event.*;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.text.TextAlignment;
-import View.createProfile;
+import Windows.createProfile;
 import static javafx.application.Application.launch;
 import static javafx.application.Platform.exit;
+import Windows.aboutApp;
+import javafx.application.Platform;
 /**
  *
  * @author Matt
  */
 // Looking at https://www.youtube.com/watch?v=FLkOX4Eez6o which is a JavaFX 
 // tutorial to get started
-public class appMenu extends Application implements EventHandler<ActionEvent>{
+public class appMenu extends Application{
     
     //Buttons/Labels
     Label apolloLabel;
@@ -34,6 +34,8 @@ public class appMenu extends Application implements EventHandler<ActionEvent>{
     Button continueButton;
     Button aboutButton;
     Button exitButton;
+    Stage appStage;
+    Scene appMenu;
    
     
     public static void main(String[] args) {
@@ -41,6 +43,9 @@ public class appMenu extends Application implements EventHandler<ActionEvent>{
     }
     @Override
     public void start(Stage primaryStage) throws Exception{
+        
+        appStage = primaryStage;
+        
         //setting title for window
         primaryStage.setTitle("Project Apollo");
         //Label for title
@@ -70,31 +75,18 @@ public class appMenu extends Application implements EventHandler<ActionEvent>{
         layout.getChildren().add(aboutButton);
         layout.getChildren().add(exitButton);
         
+       exitButton.setOnAction(e -> Platform.exit());
+       aboutButton.setOnAction(e -> aboutApp.about("Project Apollo - About"));
+       profileButton.setOnAction(e -> createProfile.createProfile("Project Apollo - Create Profile"));
+       continueButton.setOnAction(e -> chooseProfile.chooseProfile("Project Apollo - Choose Profile"));
         
-        exitButton.setOnAction(this);
-        
-        Scene scene = new Scene(layout,300,380);
-        primaryStage.setScene(scene);
+        Scene appMenu = new Scene(layout,300,380);
+        primaryStage.setScene(appMenu);
         primaryStage.show();
         
         
 
-}
+    }
 
-    @Override
-    public void handle(ActionEvent event) {
-     if(event.getSource()== exitButton) {
-         exit();
-    }
-     if(event.getSource()== profileButton) {
-    
-    }
-     if(event.getSource()== continueButton) {
-       
-    }
-     if(event.getSource()== aboutButton) {
-         exit();
-    }
-     
-    }
+
 }

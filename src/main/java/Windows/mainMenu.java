@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package Windows;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -18,23 +18,22 @@ import javafx.stage.Stage;
  *
  * @author Matt
  */
-public class mainMenu extends Application{
+public class mainMenu {
     
-    //Buttons/Labels
-    Button shotLogging;
-    Button logoutButton;
-    Button profileInfo;
-   
-    
-    public static void main(String[] args) {
-        launch(args);
-    }
-  
-    @Override
-    public void start(Stage primaryStage) throws Exception {
 
+    
+
+    public static void mainMenu(String Title) {
+
+        //Buttons/Labels/Stage
+        Stage mainMenu = new Stage();
+        
+        Button shotLogging = new Button("Exit Window");
+        Button profileInfo = new Button("Profile Info");
+        Button logoutButton = new Button("Logout");
+        
         //setting title for window
-        primaryStage.setTitle("Project Apollo - Main Menu");
+        mainMenu.setTitle(Title);
         
         VBox layout = new VBox();
         layout.setAlignment(Pos.CENTER);
@@ -44,10 +43,10 @@ public class mainMenu extends Application{
         layout.getChildren().add(profileInfo);
         layout.getChildren().add(logoutButton);
         Scene scene = new Scene(layout,300,380);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        mainMenu.setScene(scene);
+        mainMenu.show();
         
 
-}
-     
     }
+     
+}
