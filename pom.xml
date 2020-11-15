@@ -90,7 +90,7 @@
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>View.createProfile</mainClass>
+                            <mainClass>Windows.createProfile</mainClass>
                         </configuration>
                     </execution>
                     <execution>
@@ -99,7 +99,7 @@
                             <options>
                                 <option>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</option>
                             </options>
-                            <mainClass>View.createProfile</mainClass>
+                            <mainClass>Windows.createProfile</mainClass>
                         </configuration>
                     </execution>
                 </executions>
