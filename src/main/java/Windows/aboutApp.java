@@ -40,7 +40,7 @@ public class aboutApp {
         layout.setSpacing(35);
 
       
-        Button Exit = new Button("Exit Window");
+        Button Exit = new Button("Back");
         Exit.setOnAction(e -> about.close());
         
         layout.getChildren().add(Exit);

@@ -31,26 +31,29 @@ public class shoot {
         shoot.setTitle(Title);
         
         //Getting image https://www.tutorialspoint.com/javafx/javafx_images.htm
-        Image Target = new Image(new FileInputStream(""));
+        Image Target = new Image(new FileInputStream("\\Images\\shotTarget.png"));
         
         ImageView imageView = new ImageView(Target);
         
-        imageView.setX(100);
-        imageView.setY(300);
+        imageView.setX(15);
+        imageView.setY(30);
         
         imageView.setFitHeight(750);
         imageView.setFitWidth(900);
-        // Label will change based on either Round based or Free shooting logging
-        Label shootType = new Label("a");
+        
+        imageView.setPreserveRatio(true); 
+        
         Button Back = new Button("Back");
-        Button Log = new Button("Back");
+        
+        Back.setS
+        Button Log = new Button("Log");
         VBox layout = new VBox();
         layout.setAlignment(Pos.CENTER);
         layout.setSpacing(35);
         
         layout.getChildren().add(Back);
         layout.getChildren().add(Log);
-        layout.getChildren().add(shootType);
+        
         //combine imageView and layout to one with group
         Group root = new Group(imageView,layout);
         

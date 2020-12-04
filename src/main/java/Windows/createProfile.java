@@ -57,7 +57,7 @@ public class createProfile {
         skillLevel = new Label("Skill level: ");
         bodyType = new Label("Body Type");
         back = new Button("Back");
-        forward = new Button("Forward");
+        forward = new Button("Create Profile");
         ComboBox dropDown = new ComboBox();
         ComboBox dropDown2 = new ComboBox();
         ComboBox dropDown3 = new ComboBox();
@@ -71,9 +71,14 @@ public class createProfile {
         bType = new ComboBox(dropDown.getItems());
         sLevel = new ComboBox(dropDown2.getItems());
         bow = new ComboBox(dropDown3.getItems());
-
+        // bug with this code
+        back.setOnAction(e -> createProfile.close());
+        forward.setOnAction(e ->  {
+            createProfile.close();         
+                });
+        // bug with this code
         VBox layout = new VBox();
-
+        
         layout.setAlignment(Pos.CENTER);
 
         //adds all of the elements to the panel
@@ -86,8 +91,8 @@ public class createProfile {
         layout.getChildren().add(bow);
         layout.getChildren().add(bodyType);
         layout.getChildren().add(bType);
-        //  layout.getChildren().add(back);       
-        // layout.getChildren().add(forward);
+        layout.getChildren().add(back);       
+        layout.getChildren().add(forward);
         Scene scene = new Scene(layout, 400, 520);
 
         createProfile.setScene(scene);
