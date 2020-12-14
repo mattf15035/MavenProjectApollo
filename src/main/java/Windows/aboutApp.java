@@ -24,16 +24,16 @@ import javafx.stage.Stage;
  * @author Matt
  */
 
-public class aboutApp {
+public class aboutApp extends Stage {
     // this will be an informational button about the app
     Button Exit;
+    Scene about;
 
-    public static void about(String Title) {
+   public aboutApp(String Title) {
         
-        Stage about = new Stage();
         //setting title for window
-        about.setTitle(Title);
-        about.initModality(Modality.APPLICATION_MODAL);
+        this.setTitle(Title);
+        this.initModality(Modality.APPLICATION_MODAL);
         
         VBox layout = new VBox();
         layout.setAlignment(Pos.CENTER);
@@ -41,14 +41,21 @@ public class aboutApp {
 
       
         Button Exit = new Button("Back");
-        Exit.setOnAction(e -> about.close());
+        Exit.setOnAction(e -> this.close());
         
         layout.getChildren().add(Exit);
         
-        Scene scene = new Scene(layout, 300, 380);
-        about.setScene(scene);
+        Scene about = new Scene(layout, 300, 380);
+        this.setScene(about);
         
-        about.showAndWait();
+        this.showAndWait();
         
     }
+
+    public Scene getAbout() {
+        return about;
+    }
+
+   
+
 }

@@ -17,27 +17,26 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+import Windows.Shoot;
 /**
  *
  * @author Matt
  */
-public class mainMenu {
+public class mainMenu extends Stage{
+    
+Scene mainMenu;
     
 
-    
-
-    public static void mainMenu(String Title) {
+    public mainMenu(String Title) {
 
         //Buttons/Labels/Stage
-        Stage mainMenu = new Stage();
-        mainMenu.initModality(Modality.APPLICATION_MODAL);
+        this.initModality(Modality.APPLICATION_MODAL);
         Button shotLogging = new Button("Shoot!");
         Button profileInfo = new Button("Profile Info");
         Button logoutButton = new Button("Logout");
         
         //setting title for window
-        mainMenu.setTitle(Title);
+        this.setTitle(Title);
         
         VBox layout = new VBox();
         layout.setAlignment(Pos.CENTER);
@@ -46,19 +45,29 @@ public class mainMenu {
         layout.getChildren().add(shotLogging);
         layout.getChildren().add(profileInfo);
         layout.getChildren().add(logoutButton);
-        Scene scene = new Scene(layout,300,380);
-        mainMenu.setScene(scene);
-        mainMenu.show();
+        Scene mainMenu = new Scene(layout,300,380);
+        this.setScene(mainMenu);
+        this.show();
         
         shotLogging.setOnAction(e -> {
             try {
-                shoot.shoot("Shot Logging");
+                Shoot newChart = new Shoot("shot");
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(mainMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+ 
         });
 
 
+    }
+
+    public Scene getMainMenu() {
+        return mainMenu;
+    }
+
+    public void setMainMenu(Scene mainMenu) {
+        this.mainMenu = mainMenu;
     }
      
 }

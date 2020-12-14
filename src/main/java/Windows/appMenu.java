@@ -15,11 +15,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import Windows.createProfile;
 import static javafx.application.Application.launch;
 import static javafx.application.Platform.exit;
-import Windows.aboutApp;
 import javafx.application.Platform;
+
 /**
  *
  * @author Matt
@@ -35,10 +34,14 @@ public class appMenu extends Application{
     Button aboutButton;
     Button exitButton;
     Stage appStage;
+    
     Scene appMenu;
+    
+    
+   
    
     
-    public static void main(String[] args) {
+    public void appMenu(String[] args) {
         launch(args);
     }
     @Override
@@ -75,10 +78,15 @@ public class appMenu extends Application{
         layout.getChildren().add(aboutButton);
         layout.getChildren().add(exitButton);
         
+        //creating objects to call getters
+       aboutApp aboutObj = new aboutApp("Title");
+       createProfile createProfileObj = new createProfile("Project Apollo - Create Profile");
+       chooseProfile chooseProfileObj = new chooseProfile("Project Apollo - Choose Profile");
+       
        exitButton.setOnAction(e -> Platform.exit());
-       aboutButton.setOnAction(e -> aboutApp.about("Project Apollo - About"));
-       profileButton.setOnAction(e -> createProfile.createProfile("Project Apollo - Create Profile"));
-       continueButton.setOnAction(e -> chooseProfile.chooseProfile("Project Apollo - Choose Profile"));
+       aboutButton.setOnAction(e -> appStage.setScene(aboutObj.about));
+       profileButton.setOnAction(e -> appStage.setScene(createProfileObj.createProfile));
+       continueButton.setOnAction(e -> appStage.setScene(chooseProfileObj.getChooseProfile()));
         
         Scene appMenu = new Scene(layout,300,380);
         primaryStage.setScene(appMenu);

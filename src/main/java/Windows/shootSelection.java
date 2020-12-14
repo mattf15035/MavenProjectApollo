@@ -16,8 +16,8 @@ import javafx.stage.Stage;
  *
  * @author Matt
  */
-public class shootSelection {
-    public static void shotType(String Title){
+public class shootSelection extends Stage{
+    public shootSelection(String Title){
         Stage shootSelection = new Stage();
         
 

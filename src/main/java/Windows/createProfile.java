@@ -15,11 +15,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+
 /**
  *
  * @author Matt
  */
-public class createProfile {
+public class createProfile extends Stage {
 
     //Labels & text entries
     Label profileName;
@@ -30,26 +31,14 @@ public class createProfile {
     ComboBox sLevel;
     Label bodyType;
     ComboBox bType;
-    Stage createprofileStage;
+    Scene createProfile;
     Button back;
     Button forward;
 
-    public static void createProfile(String Title) {
-
-        Label profileName;
-        TextField pName;
-        Label bowType;
-        ComboBox bow;
-        Label skillLevel;
-        ComboBox sLevel;
-        Label bodyType;
-        ComboBox bType;
-        Button back;
-        Button forward;
+    public createProfile(String Title) {
         
-        Stage createProfile = new Stage();
-        createProfile.initModality(Modality.APPLICATION_MODAL);
-        createProfile.setTitle(Title);
+        this.initModality(Modality.APPLICATION_MODAL);
+        this.setTitle(Title);
 
         profileName = new Label("Profile name: ");
         pName = new TextField();
@@ -71,12 +60,12 @@ public class createProfile {
         bType = new ComboBox(dropDown.getItems());
         sLevel = new ComboBox(dropDown2.getItems());
         bow = new ComboBox(dropDown3.getItems());
-        // bug with this code
-        back.setOnAction(e -> createProfile.close());
+      
+        back.setOnAction(e -> this.close());
         forward.setOnAction(e ->  {
-            createProfile.close();         
+            this.close();         
                 });
-        // bug with this code
+    
         VBox layout = new VBox();
         
         layout.setAlignment(Pos.CENTER);
@@ -93,11 +82,16 @@ public class createProfile {
         layout.getChildren().add(bType);
         layout.getChildren().add(back);       
         layout.getChildren().add(forward);
-        Scene scene = new Scene(layout, 400, 520);
+        Scene createProfile = new Scene(layout, 400, 520);
 
-        createProfile.setScene(scene);
+        this.setScene(createProfile);
 
-        createProfile.showAndWait();
+        this.showAndWait();
 
     }
+
+    public Scene getCreateProfile() {
+        return createProfile;
+    }
+    
 }

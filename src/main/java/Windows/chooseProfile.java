@@ -13,21 +13,22 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+
 /**
  *
  * @author Matt
  */
-public class chooseProfile {
-    // this will be an informational button about the app
+public class chooseProfile extends Stage {
+ 
     Button Exit;
     Button Choose;
     ComboBox Profiles;
-    public static void chooseProfile(String Title) {
-        
-        Stage chooseProfile = new Stage();
+    Scene chooseProfile;
+   public chooseProfile (String Title) {
+  
         //setting title for window
-        chooseProfile.setTitle(Title);
-        chooseProfile.initModality(Modality.APPLICATION_MODAL);
+        this.setTitle(Title);
+        this.initModality(Modality.APPLICATION_MODAL);
         
         VBox layout = new VBox();
         layout.setAlignment(Pos.CENTER);
@@ -35,10 +36,14 @@ public class chooseProfile {
         ComboBox Profiles = new ComboBox();
         Button Choose = new Button("Choose Profile");
         Button Exit = new Button("Back");
-        Exit.setOnAction(e -> chooseProfile.close());
+        
+        Exit.setOnAction(e -> this.close());
+        
+        mainMenu mainMenuObj = new mainMenu("Title main menu");
+        
         Choose.setOnAction(e -> {
-            mainMenu.mainMenu("Project Apollo - Main Menu");
-            chooseProfile.hide();
+            this.setScene(mainMenuObj.getMainMenu());
+            this.hide();
             ;
                 });
         
@@ -46,10 +51,15 @@ public class chooseProfile {
         
         
         
-        Scene scene = new Scene(layout, 300, 380);
-        chooseProfile.setScene(scene);
+        Scene chooseProfile = new Scene(layout, 300, 380);
+        this.setScene(chooseProfile);
         
-        chooseProfile.showAndWait();
+        this.showAndWait();
         
     }
+
+    public Scene getChooseProfile() {
+        return chooseProfile;
+    }
+   
 }
